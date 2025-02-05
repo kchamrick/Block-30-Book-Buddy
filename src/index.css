@@ -1,13 +1,18 @@
-body {
-  font-family: Georgia, serif;
-  background-color: #f8f8f8;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-#logo-image {
-  width: 30px;
-  margin-right: 10px;
+/* CSS Variables/Design System */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  /* ... other variables ... */
 }
 
-/* Add your own custom styles here */
+/* Global Typography */
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  line-height: 1.6;
+}

@@ -1,0 +1,39 @@
+/* components/styles/Account.css */
+.account-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .account-header {
+    margin-bottom: 30px;
+  }
+  
+  .account-welcome {
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .checked-out-books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .return-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .return-button:hover {
+    background-color: #c0392b;
+  }
