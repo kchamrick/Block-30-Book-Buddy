@@ -1,29 +1,32 @@
+//Synopsis of what's happening on this page of code:
+//1. Imports dependencies and sets up Account component with props
+//2. Manages state for a user's checked out books (fetches user's checked out books when component mounts)
+//3. Handles book return functionality 
+//4. Uses protected routing and renders account interface with book dispay and return options
+//This component serves to handle a user's book check outs and returns, protect route access, render content based on user state, and render errors when they occur. Four functions are used: Account(), two async functions: fetchCheckedOutBooks() and handleReturn(), and two hook: useState and useEffect.
+
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import './styles/Account.css';
 
 const Account = ({ token, user, API_URL }) => { //variable defines the account component, setting up state for a user's checked out book(s). Destructuring is used to extract three props: authentication token, user data, and the API. 
   const [checkedOutBooks, setCheckedOutBooks] = useState([]); //state for a users checked out books -- setter function setCheckedOutBooks updates the state
-  const [error, setError] = useState(''); //checks for errors 
+  const [error, setError] = useState(''); 
 
-  useEffect(() => {
-    if (token) { //useEffect runs if a user is logged in
-      fetchCheckedOutBooks(); //function call to get user's books
-    }
-  }, [token, API_URL]); //dependency – useEffect runs if token or API URL changes
+  if (!token) return <Navigate to="/login" />;
 
   const fetchCheckedOutBooks = async () => {
     try {
-      const response = await fetch(`${API_URL}/reservations/users/me`, { //makes a request to the reservations endpoint
+      const response = await fetch(`${API_URL}/reservations`, { 
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
-        } //token ensures that the correct reservations are returned
-      });
+        } 
+      }); //makes a request to the reservations endpoint
 
       if (!response.ok) {
         throw new Error('Failed to fetch checked out books');
-      } //if there's an error in fetching the checked out books associated with a user, an error message is thrown
+      }
 
       const data = await response.json();
       setCheckedOutBooks(data.reservation || []); // updates state with book reservations or an empty array if there are none
@@ -54,8 +57,11 @@ const Account = ({ token, user, API_URL }) => { //variable defines the account c
     } //if there's an error fetching the list, an error message is thrown and logged to the console
   };
 
-  if (!token) return <Navigate to="/login" />;
-//if there's no token, the user is redirected to the login page -- this protects unauthorized users from accessing protected routes 
+  useEffect(() => {
+    if (token) { //useEffect runs if a user is logged in
+      fetchCheckedOutBooks(); //function call to get user's books
+    }
+  }, [token, API_URL]); //dependency – useEffect runs if token or API URL changes
 
   return ( //container for a user's logged in account that shows their book status...includes conditional rendering with a welcome message but only if the user exists
     <div className="account-container">

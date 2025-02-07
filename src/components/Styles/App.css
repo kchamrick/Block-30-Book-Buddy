@@ -1,3 +1,5 @@
+/*App Styling*/
+
 .app-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -10,9 +12,4 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-  }
-  
-  .app-logo {
-    height: 60px;
-    width: auto;
   }

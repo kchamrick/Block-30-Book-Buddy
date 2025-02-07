@@ -1,3 +1,5 @@
+/*Books styling*/
+
 .books-container {
   padding: 20px;
 }
@@ -7,9 +9,10 @@
   max-width: 500px;
   padding: 10px;
   margin-bottom: 30px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
   font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .books-grid {
@@ -20,54 +23,74 @@
 }
 
 .book-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease;
   background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height:380px;
 }
 
 .book-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 
 .book-card-image {
   width: 100%;
-  height: 300px;
+  height: 200px;
   object-fit: cover;
 }
 
 .book-card-content {
   padding: 15px;
+  display:flex;
+  flex-direction: column;
+  height:100%;
+  justify-content: space-between;
 }
 
 .book-card-title {
-  font-size: 1.2em;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0 0 10px 0;
-  color: #2c3e50;
+  color: darkslategray;
 }
 
 .book-card-author {
-  color: #7f8c8d;
+  color: darkslategray;
   margin: 0 0 10px 0;
 }
 
 .book-card-status {
-  color: #2ecc71;
-  font-weight: 500;
+  color: lightskyblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
 }
 
 .book-card-status.unavailable {
-  color: #e74c3c;
+  color: salmon;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
 }
 .book-card-link {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #3498db;
+  background-color: #8A9A5B;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 10px;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+.book-card-link:hover{
+  transform: scale(1.07);
+  background-color: lightskyblue;
+  color:darkslategray;
 }

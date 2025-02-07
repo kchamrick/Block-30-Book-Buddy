@@ -1,3 +1,9 @@
+//Synopsis of what's happening on this page of code:
+//1. import of all components and styles needed for the application to run
+//2. Declaration of API endpoint constant
+//3. Route set up for different views 
+//The core functionality of this page is managing the auth token and user states, fetching and storing book data, handling user authentication, routing users to other routes, and error handling. Five functions are used: App(), two async functions: fetchBooks() and fetchUserData(), and two hooks: useState and useEffect. 
+
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from "./components/Navigation";
@@ -7,7 +13,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Account from "./components/Account";
 import './components/styles/App.css'; 
-//import of all components and styles ^
 
 const API_URL = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api'; //API endpoint constant for ease of use throughout application
 
@@ -50,11 +55,11 @@ function App() { //function for state management of token, user data, and books
     }
   };
 
-  return ( //Below, added a container and header for stling to display the routes available to users (i.e. Login, Register, Account).
+  return ( //Below, added a container and header for styling to display the routes available to users (i.e. Login, Register, Account). Props and token are used with Navigation to determine if a user is logged in and show the correct nav. options. 
     <Router>
       <div className="app-container"> 
         <header className="app-header">
-          <Navigation token={token} setToken={setToken} user={user} setUser={setUser} />
+          <Navigation token={token} setToken={setToken} user={user} setUser={setUser} /> 
         </header>
         <Routes>
           <Route path="/" element={<Books books={books} token={token} />} />

@@ -1,4 +1,5 @@
-/* components/styles/Account.css */
+/* Account.css styles */
+
 .account-container {
     max-width: 900px;
     margin: 0 auto;
@@ -10,8 +11,9 @@
   }
   
   .account-welcome {
-    font-size: 1.5em;
-    color: #2c3e50;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkslategray;
     margin-bottom: 20px;
   }
   
@@ -23,11 +25,14 @@
   }
   
   .return-button {
-    background-color: #e74c3c;
-    color: white;
+    background-color: lightskyblue;
+    color: darkslategray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 16px;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
@@ -35,5 +40,5 @@
   }
   
   .return-button:hover {
-    background-color: #c0392b;
+    background-color: salmon;
   }

@@ -1,7 +1,14 @@
 .nav-container {
-  background-color: #2c3e50;
-  padding: 15px 30px;
+  background-color: darkslategrey;
+  padding: 10px 25px;
   margin-bottom: 30px;
+  border-radius: 10px;
+  display:flex;
+  width:100%;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  z-index:100;
 }
 
 .nav-links {
@@ -13,24 +20,27 @@
 .nav-link {
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #3498db;
+  color: skyblue;
 }
 
 .nav-button {
-  background-color: #e74c3c;
-  color: white;
+  background-color: skyblue;
+  color: darkslategray;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 8px 18px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #c0392b;
+  background-color: salmon;
 }

@@ -1,11 +1,15 @@
+//Synopsis of what's happening on this page of code:
+//1. Set up of Books component with props for books array and authentication token
+//2. search functionality for book filtering is added
+//3. Allows users to view book details and availability for check out
+//This page makes it possible for users to view books, their details, their availability, and to search for specific books using the search bar on the application. Two functions are used: Books(), a useState hook, and a filter function: filteredBooks.
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Books.css';
 
-const Books = ({ books, token }) => { 
+const Books = ({ books }) => { 
   const [searchTerm, setSearchTerm] = useState(''); //manages the state for book searches -- begins with an empty array
-
-  console.log('Books data:', books); //logs books array to the console
 
   const filteredBooks = books.filter(book =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

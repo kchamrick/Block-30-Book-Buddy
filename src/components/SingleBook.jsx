@@ -1,16 +1,22 @@
+//Synopsis of what's happening on this page of code:
+//1. Sets up SingleBook component with state management for book details -- allowing users to view a specific book's details
+//2. Manages book checkout functionality
+//This page handles book details retrieval and display, book check out functionality, and user authentication for checking out and returning books. The following functions are used: SingleBook(), fetchBookDetails(), handleCheckout(), useState, useEffect, useParams, and useNavigate. 
+
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './styles/SingleBook.css';
 
 const SingleBook = ({ token, API_URL }) => {
-  const [book, setBook] = useState(null); // manages state for book data
-  const [error, setError] = useState(''); // manages state for errors
-  const { id } = useParams(); // gets book id from API
+  const [book, setBook] = useState(null); 
+  const [error, setError] = useState(''); 
+  const { id } = useParams(); 
+
   const navigate = useNavigate(); 
 
   useEffect(() => {
     if (id) { //useEffect runs if book id exists
-      fetchBookDetails(); //runs the function
+      fetchBookDetails(); 
     }
   }, [id]); //re-runs useEffect if the id chanages
 
@@ -28,14 +34,14 @@ const SingleBook = ({ token, API_URL }) => {
     }
   };
 
-  const handleCheckout = async () => { 
+  const handleCheckout = async (bookId) => { 
     if (!token) { //if there's no token, the user is redirected to the log in page
       navigate('/login');
       return;
     }
 
     try { //Makes the checkout request
-      const response = await fetch(`${API_URL}/books/${id}/checkout`, {
+      const response = await fetch(`${API_URL}/books/${bookId}`, {
         method: 'PATCH', //updates book availability - different than post and used instead bc post would create a new resource
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +72,7 @@ const SingleBook = ({ token, API_URL }) => {
     );
   }
 
-  return ( //container for each of the books for visual display across user interface
+  return ( //container for each of the books 
     <div className="single-book-container">
       <div className="single-book-content">
         <img src={book.coverimage} alt={book.title} className="single-book-image" />
@@ -76,7 +82,7 @@ const SingleBook = ({ token, API_URL }) => {
           <p className="single-book-description">{book.description}</p>
           {error && <p className="error-message">{error}</p>}
           {book.available && token && (
-            <button onClick={handleCheckout} className="checkout-button">
+            <button onClick={()=> handleCheckout(book.id)} className="checkout-button">
               Check Out
             </button>
           )}

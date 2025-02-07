@@ -1,12 +1,15 @@
+//Synopsis of what's happening on this page of code:
+//1. Sets up Navigation component with conditional rendering of navigation links based on a user's authentication status (whether they have an account and/or are logged in)
+//This page handles user state based on their authorization within the application. The following functions are used: Navigation(), useNavigate, and handleLogout. 
+
 import { Link, useNavigate } from 'react-router-dom';
 import './styles/Navigation.css';
 
-const Navigation = ({ token, setToken, user, setUser }) => { //Defines the navigation component using destructured props for auth state and functions
-const navigate = useNavigate(); //calls the function 
+const Navigation = ({ token, setToken }) => { 
+const navigate = useNavigate(); 
 
 const handleLogout = () => { //logout function for logging users out
     setToken(null); //clear token state
-    setUser(null); //clear user data state
     localStorage.removeItem('token'); //removes token from storage
     navigate('/'); //and then reroutes users to the home page of this application
   };

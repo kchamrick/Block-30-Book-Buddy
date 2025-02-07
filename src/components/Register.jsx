@@ -1,3 +1,8 @@
+//Synopsis of what's happening on this page of code:
+//1. Sets up Registration component
+//2. Manages state changes for form and form submission and the data that is entered into the form (user registration API integration)
+//This page handles registration form data and a user's navigation after they establish an account. The following functions are used: Register(), handleSubmit(), handleChange(), useState, and useNavigate.  
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Auth.css';

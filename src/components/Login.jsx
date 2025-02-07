@@ -1,11 +1,18 @@
+//Synopsis of what's happening on this page of code:
+//1. Sets up Login component with token and API props
+//2. Manages state changes for user email and passwords
+//3. Holds Login form, form rendering, and form submission handler
+//This page handles user authentication, form validation, and user navigation within the application after they've logged in. The following functions are used: Login(), handleSubmit(), useState, and useNavigate. 
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Auth.css';
 
 const Login = ({ setToken, API_URL }) => { //variable set for login with a setToken function 
-  const [email, setEmail] = useState(''); //sets state for email input -- starts with an empty array
-  const [password, setPassword] = useState(''); //sets state for password input -- starts with an empty array
-  const [error, setError] = useState(''); //state for error messages
+  const [email, setEmail] = useState(''); 
+  const [password, setPassword] = useState(''); //
+  const [error, setError] = useState(''); 
+  
   const navigate = useNavigate(); //hook for navigation after a user logs in
 
   const handleSubmit = async (e) => { //login form submission handler
